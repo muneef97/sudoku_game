@@ -15,6 +15,7 @@ function validate(){
             return ;
         }
         checkingOutput();
+        update_result();
 }
 
 function populateInput(){
@@ -44,5 +45,36 @@ function checkingOutput(){
     }
     var d = new Date()
     end_time = d.getTime();
-    alert("Congratulations, You completed in " + 0.001 * (end_time - start_time) + " seconds" );
+    //alert("Congratulations, You completed in " + 0.001 * (end_time - start_time) + " seconds" );
+    document.getElementById('log').innerHTML += "<br>Congratulations, You completed in " + 0.001 * (end_time - start_time) + " seconds";
+
 }
+
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+
+}
+
+function httpPost(theUrl){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', theUrl, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        // do something to response
+        console.log(this.responseText);
+        document.getElementById('tablevalues').innerHTML = this.responseText;
+    };
+    xhr.send('userid=2&username='+document.getElementById("username").value+'&user_time='+0.001 * (end_time - start_time));
+}
+function getUserData(){
+document.getElementById('tablevalues').innerHTML += httpGet("/get_user_data");
+}
+function update_result(){
+httpPost("/update_result");
+}
+window.onload=getUserData
+
