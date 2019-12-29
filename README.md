@@ -9,6 +9,8 @@ your name with the time you finished will be shown.
 Other wise an alert will be shown. At the bottom a table will be shown 
 which shows the current list of players who have finished the sudoku game. 
 
+![Image description](images/game-screenshot.PNG)
+
 ## Development
 This game was developed using python, html, css, javascript, JSON and mysql. 
 

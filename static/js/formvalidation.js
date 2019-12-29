@@ -19,7 +19,7 @@ function validate(){
 }
 
 function populateInput(){
-    var inputArray=puzzles[0].question
+    var inputArray=puzzles[1].question
     for(i=0;i<9;i++){
         for (j=0;j<9;j++){
             if(inputArray[i][j]!='0'){
@@ -34,7 +34,7 @@ function populateInput(){
 }
 
 function checkingOutput(){
-    var outputArray =  puzzles[0].answer;
+    var outputArray =  puzzles[1].answer;
     for (i=0;i<9;i++){
         for(j=0;j<9;j++){
             if(document.getElementById("cell-" + i +"-"+j).value!=outputArray[i][j]){
